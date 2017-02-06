@@ -1,25 +1,25 @@
 class AbstractFactory:
-    def CreateProductA(self):
+    def create_product_A(self):
         raise NotImplementedError('You must implement this method')
 
-    def CreateProductB(self):
+    def create_product_B(self):
         raise NotImplementedError('You mut implement this method')
 
 
 class ConcreteFactory1(AbstractFactory):
-    def CreateProductA(self):
-        pass
+    def create_product_A(self):
+        return ProductA1()
 
-    def CreateProductB(self):
-        pass
+    def create_product_B(self):
+        return ProductB1()
 
 
 class ConcreteFactory2(AbstractFactory):
-    def CreateProductA(self):
-        pass
+    def create_product_A(self):
+        return ProductA2()
 
-    def CreateProductB(self):
-        pass
+    def create_product_B(self):
+        return ProductB2()
 
 
 class AbstractProductA:
@@ -50,17 +50,22 @@ class ProductB2(AbstractProductB):
         print("Product B2")
 
 
+class Client:
+    def __init__(self, factory: AbstractFactory):
+        self.factory = factory
+
+    def create_products(self):
+        self.factory.create_product_A()
+        self.factory.create_product_B()
+
+
 if __name__ == "__main__":
     print("\n ----- Concrete Factory ----- \n")
 
-    concrete_factory = ConcreteCreator()
-    concrete_factory.do_operation("Green")
-    concrete_factory.do_operation("Blue")
-    concrete_factory.do_operation("Red")
+    client = Client(ConcreteFactory1())
+    client.create_products()
 
     print("\n ----- Other Factory ----- \n")
 
-    other_factory = OtherCreator()
-    other_factory.do_operation("Green")
-    other_factory.do_operation("Blue")
-    other_factory.do_operation("Red")
+    client = Client(ConcreteFactory2())
+    client.create_products()

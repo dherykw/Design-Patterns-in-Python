@@ -1,4 +1,4 @@
-class Creator:
+class Factory:
     def factory_method_create_product(self, type_):
         raise NotImplementedError('you must implement this method')
 
@@ -7,24 +7,24 @@ class Creator:
         product.do_something()
 
 
-class ConcreteCreator(Creator):
+class ConcreteFactory1(Factory):
     def factory_method_create_product(self, type_):
         if type_ is "Blue":
-            return ConcreteBlueProduct()
+            return BlueProduct1()
         elif type_ is "Red":
-            return ConcreteRedProduct()
+            return RedProduct1()
         elif type_ is "Green":
-            return ConcreteGreenProduct()
+            return GreenProduct1()
 
 
-class OtherCreator(Creator):
+class ConcreteFactory2(Factory):
     def factory_method_create_product(self, type_):
         if type_ is "Blue":
-            return OtherBlueProduct()
+            return BlueProduct2()
         elif type_ is "Red":
-            return OtherRedProduct()
+            return RedProduct2()
         elif type_ is "Green":
-            return OtherGreenProduct()
+            return GreenProduct2()
 
 
 class Product:
@@ -35,47 +35,47 @@ class Product:
         print("I am {} and I am doing something".format(self.name))
 
 
-class ConcreteBlueProduct(Product):
+class BlueProduct1(Product):
     def __init__(self):
-        super().__init__("Concrete Blue Product")
+        super().__init__("Blue Product 1")
 
 
-class ConcreteRedProduct(Product):
+class RedProduct1(Product):
     def __init__(self):
-        super().__init__("Concrete Red Product")
+        super().__init__("Red Product 1")
 
 
-class ConcreteGreenProduct(Product):
+class GreenProduct1(Product):
     def __init__(self):
-        super().__init__("Concrete Green Product")
+        super().__init__("Green Product 1")
 
 
-class OtherBlueProduct(Product):
+class BlueProduct2(Product):
     def __init__(self):
-        super().__init__("Other Blue Product")
+        super().__init__("Blue Product 2")
 
 
-class OtherRedProduct(Product):
+class RedProduct2(Product):
     def __init__(self):
-        super().__init__("Other Red Product")
+        super().__init__("Red Product 2")
 
 
-class OtherGreenProduct(Product):
+class GreenProduct2(Product):
     def __init__(self):
-        super().__init__("Other Green Product")
+        super().__init__("Green Product 2")
 
 
 if __name__ == "__main__":
     print("\n ----- Concrete Factory ----- \n")
 
-    concrete_factory = ConcreteCreator()
+    concrete_factory = ConcreteFactory1()
     concrete_factory.do_operation("Green")
     concrete_factory.do_operation("Blue")
     concrete_factory.do_operation("Red")
 
     print("\n ----- Other Factory ----- \n")
 
-    other_factory = OtherCreator()
+    other_factory = ConcreteFactory2()
     other_factory.do_operation("Green")
     other_factory.do_operation("Blue")
     other_factory.do_operation("Red")

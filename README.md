@@ -2,7 +2,7 @@
 # Design Patterns in Python
 
 
-This repository contains design patterns written in python3, they are implemented using interface with duck typing
+This repository contains design patterns written in python3, they are implemented using interface style with duck typing
 
 
 ###Patterns

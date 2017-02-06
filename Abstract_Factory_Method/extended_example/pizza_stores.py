@@ -1,5 +1,5 @@
-from Factory_Abstract.extended_example.pizzas import Pizza, CheesePizza, ClamPizza
-from Factory_Abstract.extended_example.ingredients_factories import NYPizzaIngredientsFactory, \
+from Abstract_Factory_Method.extended_example.pizzas import Pizza, CheesePizza, ClamPizza
+from Abstract_Factory_Method.extended_example.ingredients_factories import NYPizzaIngredientsFactory, \
     ChicagoPizzaIngredientsFactory
 
 
